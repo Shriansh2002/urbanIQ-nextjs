@@ -35,7 +35,7 @@ export default function Home() {
       </div>
 
       <div className="flex">
-        <div className="bg-[#F7FAFC] h-screen border-r sm:hidden md:hidden lg:block xl:block">
+        <div className="bg-[#F7FAFC] h-[830px] border-r sm:hidden md:hidden lg:block xl:block">
           <SideBar />
         </div>
         <div className="flex-1">
