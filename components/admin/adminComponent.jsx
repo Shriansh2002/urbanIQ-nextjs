@@ -30,10 +30,10 @@ const AdminComponent = () => {
             <div className='mt-14 border-2 rounded-md p-4 flex flex-col align-middle'>
                 <div className="flex">
                     <div className="flex flex-col w-5/12">
-                        <h2 className='text-lg font-bold'>
+                        <h2 className='text-lg font-bold text-[#A0AEBF]'>
                             Key
                         </h2>
-                        <p className='text-stone-500'>
+                        <p className='text-[#A0AEBF]'>
                             The unique key used to identify this Template
                         </p>
                     </div>
@@ -46,12 +46,17 @@ const AdminComponent = () => {
                                 className="bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[400px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-not-allowed"
                                 placeholder='f94f4de8-b7b9-43e3-968a-964cf9917fbe'
                             />
+                            <Link href="/">
+                                <p className='text-sm text-blue-500 underline'>
+                                    How to embed the importer into your app
+                                </p>
+                            </Link>
                         </div>
 
                     </div>
                 </div>
 
-                <div className="flex mt-12">
+                <div className="flex mt-8">
                     <div className="flex flex-col w-5/12">
                         <h2 className='text-lg font-bold'>
                             Name
@@ -69,7 +74,6 @@ const AdminComponent = () => {
                                 className="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[400px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 value={inputValue}
                                 onChange={(e) => setInputValue(e.target.value)}
-                            // TODO: give value here
                             />
                         </div>
 
