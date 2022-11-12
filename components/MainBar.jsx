@@ -1,20 +1,8 @@
 import Link from 'next/link';
-import { useState } from 'react';
-import MainModel from './MainModel';
 
 const MainBar = () => {
-    let [isOpen, setIsOpen] = useState(false);
 
     let importerId = 'ercmjoh6w1thk9cm2n0jp6tha';
-
-    function closeModal() {
-        setIsOpen(false);
-    }
-
-    function openModal() {
-        setIsOpen(true);
-    }
-
 
     return (
         <div className='p-12'>
@@ -43,8 +31,6 @@ const MainBar = () => {
                             View
                         </button>
                     </Link>
-
-                    <MainModel isOpen={isOpen} closeModal={closeModal} />
 
                 </div>
             </div>
