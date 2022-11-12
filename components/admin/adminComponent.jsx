@@ -48,7 +48,7 @@ const AdminComponent = () => {
                             />
                             <Link href="/">
                                 <p className='text-sm text-blue-500 underline'>
-                                    How to embed the importer into your app
+                                    How to embed the template into your app
                                 </p>
                             </Link>
                         </div>
