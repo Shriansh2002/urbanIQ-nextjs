@@ -1,9 +1,11 @@
+import Link from 'next/link';
 import { useState } from 'react';
 import MainModel from './MainModel';
 
-
 const MainBar = () => {
     let [isOpen, setIsOpen] = useState(false);
+
+    let importerId = 'ercmjoh6w1thk9cm2n0jp6tha';
 
     function closeModal() {
         setIsOpen(false);
@@ -12,6 +14,8 @@ const MainBar = () => {
     function openModal() {
         setIsOpen(true);
     }
+
+
     return (
         <div className='p-12'>
             <div className='flex align-middle justify-between'>
@@ -31,13 +35,14 @@ const MainBar = () => {
                 </div>
 
                 <div>
-                    <button
-                        type="button"
-                        onClick={openModal}
-                        className="rounded-md bg-white px-4 py-2 text-sm font-medium text-[#2c71b2] border-2 border-[#2c71b2] items-center"
-                    >
-                        View
-                    </button>
+                    <Link href={`/admin/view-importer/${importerId}`}>
+                        <button
+                            type="button"
+                            className="rounded-md bg-white px-4 py-2 text-sm font-medium text-[#2c71b2] border-2 border-[#2c71b2] items-center"
+                        >
+                            View
+                        </button>
+                    </Link>
 
                     <MainModel isOpen={isOpen} closeModal={closeModal} />
 

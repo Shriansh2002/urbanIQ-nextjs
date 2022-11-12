@@ -1,8 +1,7 @@
 import Head from 'next/head';
-import { SideBar } from '../components';
-import Header from '../components/Header';
+import { Header, SideBar, AdminComponent } from '../../../components';
 
-const documentation = () => {
+const Index = () => {
     return (
         <div>
             <Head>
@@ -11,15 +10,14 @@ const documentation = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-
             <Header />
 
             <div className="flex">
                 <div className="bg-[#F7FAFC] h-[830px] border-r sm:hidden md:hidden lg:block xl:block">
-                    <SideBar active={'Documentation'} />
+                    <SideBar active={'Importers'} />
                 </div>
                 <div className="flex-1">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, ratione cupiditate exercitationem iure accusantium vero quibusdam odit, reprehenderit accusamus molestiae magni quae dicta quidem ea odio nisi sapiente similique dolore?
+                    <AdminComponent />
                 </div>
             </div>
 
@@ -27,4 +25,4 @@ const documentation = () => {
     );
 };
 
-export default documentation;
+export default Index;
