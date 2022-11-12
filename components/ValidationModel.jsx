@@ -1,10 +1,10 @@
-import { Dialog, Listbox, RadioGroup, Transition } from '@headlessui/react';
+import { Dialog, RadioGroup, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 
 
 const formats = [
     {
-        name: 'Text (any value)',
+        name: 'Name',
         Description: 'Any String of Characters',
     },
     {
@@ -12,28 +12,16 @@ const formats = [
         Description: 'Numbers with , and . characters allowed',
     },
     {
-        name: 'Date',
-        Description: 'Matches selected Format',
-        formats: [
-            '27/03/1998',
-            '27/03/98',
-            '27-03-1998',
-            '27-03-98',
-            '27.03.1998',
-            '27.03.98',
-            '03/27/1998',
-            '03/27/98',
-            '03-27-1998',
-            '03-27-98',
-            '03.27.1998',
-            '03.27.98',
-            '1998-03-27',
-            'DATEVALUE 35881'
-        ]
+        name: 'Text (any value)',
+        Description: 'Any String of Characters',
     },
     {
-        name: 'Phone Number',
-        Description: 'Matches phone number with symbols: ()[]-+.',
+        name: 'Date',
+        Description: 'Matches selected Format',
+    },
+    {
+        name: 'Boolean',
+        Description: 'Matches Boolean Values',
     },
     {
         name: 'Email',
@@ -58,9 +46,7 @@ const ValidationModel = ({ isOpen, closeModal }) => {
         );
     }
 
-
     const [selected, setSelected] = useState(formats[0]);
-    const [selectedPerson, setSelectedPerson] = useState(formats[2].formats[0]);
 
     return (
         <Transition appear show={isOpen} as={Fragment}>
@@ -127,7 +113,9 @@ const ValidationModel = ({ isOpen, closeModal }) => {
                                                                             <p>
                                                                                 {plan.name}
                                                                             </p>
-                                                                            {plan?.formats &&
+
+                                                                            {/* IDEA: Change this to another UI */}
+                                                                            {/* {plan?.formats &&
                                                                                 <Listbox value={selectedPerson} onChange={setSelectedPerson} className='w-52 ml-12 z-50'>
                                                                                     <div className="relative w-fit">
                                                                                         <Listbox.Button className="rounded-lg bg-white p-2 items-center text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
@@ -162,7 +150,7 @@ const ValidationModel = ({ isOpen, closeModal }) => {
                                                                                         </Transition>
                                                                                     </div>
                                                                                 </Listbox>
-                                                                            }
+                                                                            } */}
 
 
                                                                         </RadioGroup.Label>

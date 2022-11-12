@@ -1,9 +1,18 @@
-import { Dialog, Switch, Transition } from '@headlessui/react';
+import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
+import ValidationModel from './ValidationModel';
 
 const MainModel = ({ isOpen, closeModal }) => {
-    const [mustBeMatched, setMustBeMatched] = useState(false);
-    const [valueNotNull, setValueNotNull] = useState(false);
+    let [isOpenValidation, setIsOpenValidation] = useState(false);
+
+    function closeSubModel() {
+        setIsOpenValidation(false);
+    }
+
+    function openSubModal() {
+        setIsOpenValidation(true);
+    }
+
 
     return (
         <Transition appear show={isOpen} as={Fragment}>
@@ -45,83 +54,31 @@ const MainModel = ({ isOpen, closeModal }) => {
                                 </Dialog.Title>
                                 <Dialog.Description>
                                     <div className='mt-2 p-2'>
-                                        <div className="mb-6">
-                                            <label htmlFor="default-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
-                                            <input
-                                                type="text"
-                                                id="default-input"
-                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-
-                                            <p className='text-gray-500 text-sm'>
-                                                Input the column name exactly as in your CSV or Excel file.
-                                            </p>
-
-                                            <div className="flex items-center mt-4 gap-4">
-                                                <div className='w-12'>
-                                                    <Switch
-                                                        checked={mustBeMatched}
-                                                        onChange={setMustBeMatched}
-                                                        className={`${mustBeMatched ? 'bg-blue-600' : 'bg-gray-200'
-                                                            }  relative inline-flex h-6 w-11 items-center rounded-full`}
-                                                    >
-                                                        <span className="sr-only">Must Be Matched</span>
-                                                        <span
-                                                            className={`${mustBeMatched ? 'translate-x-6' : 'translate-x-1'
-                                                                } inline-block h-4 w-4 transform rounded-full bg-white transition`}
-                                                        />
-                                                    </Switch>
-                                                </div>
-                                                <div className="flex flex-col ml-2">
-                                                    <label htmlFor="must-be-matched" className="text-md font-medium text-gray-900 dark:text-gray-300">Must Be Matched</label>
-                                                    <p className="text-xs text-gray-500 dark:text-gray-300">Require that users must match this column to a column in their imported data.</p>
-                                                </div>
-                                            </div>
-
-                                            <div className="flex items-center mt-4 gap-4">
-                                                <div className='w-12'>
-                                                    <Switch
-                                                        checked={valueNotNull}
-                                                        onChange={setValueNotNull}
-                                                        className={`${valueNotNull ? 'bg-blue-600' : 'bg-gray-200'
-                                                            }  relative inline-flex h-6 w-11 items-center rounded-full`}
-                                                    >
-                                                        <span className="sr-only">Value Cannot Be Blank</span>
-                                                        <span
-                                                            className={`${valueNotNull ? 'translate-x-6' : 'translate-x-1'
-                                                                } inline-block h-4 w-4 transform rounded-full bg-white transition`}
-                                                        />
-                                                    </Switch>
-                                                </div>
-                                                <label htmlFor="must-be-matched" className="text-md font-medium text-gray-900 dark:text-gray-300">Value Cannot Be Blank</label>
-                                            </div>
-
-
-                                            <div className="flex items-center mt-4 gap-4">
-                                                <div className='w-12'>
-                                                    <Switch
-                                                        checked={mustBeMatched}
-                                                        onChange={setMustBeMatched}
-                                                        className={`${mustBeMatched ? 'bg-blue-600' : 'bg-gray-200'
-                                                            }  relative inline-flex h-6 w-11 items-center rounded-full`}
-                                                    >
-                                                        <span className="sr-only">Validation Hook</span>
-                                                        <span
-                                                            className={`${mustBeMatched ? 'translate-x-6' : 'translate-x-1'
-                                                                } inline-block h-4 w-4 transform rounded-full bg-white transition`}
-                                                        />
-                                                    </Switch>
-                                                </div>
-                                                <div className="flex flex-col ml-2">
-                                                    <label htmlFor="must-be-matched" className="text-md font-medium text-gray-900 dark:text-gray-300">Validation Hook</label>
-                                                    <p className="text-xs text-gray-500 dark:text-gray-300">
-                                                        If enabled, data in this column will be sent to onRecordsInitial and onRecordEdit callback functions. Validation Hooks docs
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                        <InputField name="Name" desc="Input the column name exactly as in your CSV or Excel file." />
                                         <InputField name="Description" desc="Users will see this description when using the Importer." />
                                         <InputField name="Example" desc="An example of content for this column." />
+                                        <InputField name="Custom Validation Error Message" desc="Enter a custom error to show users when their data doesn't meet the validation format. If you leave this blank, we will show a standard error message such as 'Not a valid number'" />
+
+                                        <div className='border-2 rounded p-2 flex items-center justify-between pr-4 h-18'>
+                                            <div className="flex flex-col">
+                                                <p className='font-bold'>
+                                                    TEXT (any Value)
+                                                </p>
+                                                <p className='italic text-gray-500 text-sm'>
+                                                    Any string of characters
+                                                </p>
+                                            </div>
+                                            <div className="right">
+                                                <button
+                                                    type="button"
+                                                    onClick={openSubModal}
+                                                    className="rounded-md bg-white px-4 py-2 text-sm font-medium text-[#2c71b2] items-center"
+                                                >
+                                                    Change
+                                                </button>
+                                                <ValidationModel isOpen={isOpenValidation} closeModal={closeSubModel} />
+                                            </div>
+                                        </div>
                                     </div>
                                 </Dialog.Description>
                             </Dialog.Panel>
@@ -135,7 +92,7 @@ const MainModel = ({ isOpen, closeModal }) => {
 
 const InputField = ({ name, desc }) => {
     return (
-        <>
+        <div className="mb-2">
             <label htmlFor="default-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                 {name}
             </label>
@@ -147,10 +104,8 @@ const InputField = ({ name, desc }) => {
             <p className='text-gray-500 text-sm'>
                 {desc}
             </p>
-        </>
+        </div>
     );
 };
 
-
-
-export default MainModel;;
+export default MainModel;
