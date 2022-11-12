@@ -4,7 +4,7 @@ import { BsCurrencyDollar, BsGearFill } from 'react-icons/bs';
 
 const sidebarList = [
     {
-        name: 'Importers',
+        name: 'Templates',
         icon: <BiDownload size='20' />,
         link: '/',
     },
