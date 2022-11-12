@@ -79,8 +79,23 @@ const MainModel = ({ isOpen, closeModal }) => {
                                                 <ValidationModel isOpen={isOpenValidation} closeModal={closeSubModel} />
                                             </div>
                                         </div>
+
+                                        <div className="flex float-right gap-2">
+                                            <button className="bg-[#3182CE] hover:bg-[#2c71b2] text-white py-2 px-4 rounded mt-4">
+                                                Save
+                                            </button>
+
+                                            <button
+                                                onClick={closeModal}
+                                                className="text-[#2c71b2] py-2 px-4 rounded mt-4 border border-[#2c71b2]"
+                                            >
+                                                Close
+                                            </button>
+                                        </div>
+
                                     </div>
                                 </Dialog.Description>
+
                             </Dialog.Panel>
                         </Transition.Child>
                     </div>

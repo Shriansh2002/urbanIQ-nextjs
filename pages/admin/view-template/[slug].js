@@ -13,7 +13,7 @@ const Index = () => {
             <Header />
 
             <div className="flex">
-                <div className="bg-[#F7FAFC] h-[830px] border-r sm:hidden md:hidden lg:block xl:block w-[200px]">
+                <div className="bg-[#F7FAFC] h-[830px] border-r sm:hidden md:hidden lg:block">
                     <SideBar active={'Importers'} />
                 </div>
                 <div className="flex-1">
